@@ -2,8 +2,9 @@ const { assert, expect } = require("chai")
 const { network, deployments, ethers } = require("hardhat")
 const { developmentChains } = require("../../helper-hardhat-config")
 
+//describes are based on grouping
 !developmentChains.includes(network.name)
-    ? describe.skip
+    ? describe.skip //skips this file
     : describe("FundMe", function () {
           let fundMe
           let mockV3Aggregator
@@ -13,7 +14,7 @@ const { developmentChains } = require("../../helper-hardhat-config")
               // const accounts = await ethers.getSigners()
               // deployer = accounts[0]
               deployer = (await getNamedAccounts()).deployer
-              await deployments.fixture(["all"])
+              await deployments.fixture(["all"]) // to run the deploy scripts
               fundMe = await ethers.getContract("FundMe", deployer)
               mockV3Aggregator = await ethers.getContract(
                   "MockV3Aggregator",

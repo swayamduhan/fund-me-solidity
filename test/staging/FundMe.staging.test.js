@@ -10,7 +10,7 @@ developmentChains.includes(network.name)
           const sendValue = ethers.utils.parseEther("0.1")
           beforeEach(async () => {
               deployer = (await getNamedAccounts()).deployer
-              fundMe = await ethers.getContract("FundMe", deployer)
+              fundMe = await ethers.getContract("FundMe", deployer) // no need for fixtures because we are assuming the contract is already deployed on the testnet
           })
 
           it("allows people to fund and withdraw", async function () {
